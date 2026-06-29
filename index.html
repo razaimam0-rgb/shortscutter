@@ -247,8 +247,50 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:48px 20
 .page-nav-footer a{color:var(--muted);cursor:pointer;text-decoration:none}
 .page-nav-footer a:hover{color:var(--pink)}
 
-/* ── MISC ── */
-.separator{height:1px;background:var(--border);margin:80px 20px}
+/* ── SETUP GUIDE ── */
+.os-btn{background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:10px;padding:10px 24px;color:var(--muted);font-size:14px;font-weight:600;cursor:pointer;transition:all .2s}
+.os-btn.active{background:linear-gradient(135deg,rgba(255,45,85,0.2),rgba(124,58,237,0.2));border-color:rgba(255,45,85,0.4);color:var(--text)}
+.guide-phase{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px;margin-bottom:20px}
+.guide-phase-header{display:flex;align-items:center;gap:14px;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.guide-phase-num{background:linear-gradient(135deg,var(--red),var(--purple));color:white;font-size:12px;font-weight:800;padding:5px 14px;border-radius:20px;white-space:nowrap}
+.guide-phase-title{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.guide-time{font-size:12px;font-weight:400;color:var(--muted);background:rgba(255,255,255,0.04);border:1px solid var(--border);padding:3px 10px;border-radius:10px}
+.guide-step{display:flex;gap:16px;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,0.04)}
+.guide-step:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.guide-step-num{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--red),var(--purple));display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:white;flex-shrink:0;margin-top:2px}
+.guide-step-body{flex:1;min-width:0}
+.guide-step-title{font-size:16px;font-weight:700;margin-bottom:8px}
+.guide-step-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:12px}
+.guide-download-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.07);border:1px solid var(--border);border-radius:10px;padding:10px 18px;font-size:13px;font-weight:600;color:var(--text);text-decoration:none;cursor:pointer;transition:all .2s;margin-bottom:12px}
+.guide-download-btn:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2)}
+.guide-download-main{background:linear-gradient(135deg,var(--red),var(--purple));border:none;color:white;font-size:14px;padding:12px 24px;box-shadow:0 6px 20px rgba(255,45,85,.25)}
+.guide-download-main:hover{opacity:.9;transform:translateY(-1px)}
+.guide-tip{display:flex;gap:10px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:13px;color:var(--muted);margin:10px 0;line-height:1.6}
+.guide-tip-success{background:rgba(0,245,160,0.06);border-color:rgba(0,245,160,0.2)}
+.guide-tip-icon{flex-shrink:0;font-size:16px}
+.guide-verify{background:rgba(0,0,0,0.3);border-radius:10px;padding:14px;margin-top:10px}
+.guide-verify-label{font-size:12px;color:var(--muted);margin-bottom:6px}
+.guide-verify-expect{font-size:12px;color:var(--muted);margin-top:6px}
+.code-block{background:#0D0D14;border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:12px 16px;font-family:'Courier New',monospace;font-size:13px;color:#00F5A0;overflow-x:auto;margin:6px 0;user-select:all;cursor:text}
+.guide-methods{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+@media(max-width:600px){.guide-methods{grid-template-columns:1fr}}
+.guide-method{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:10px;padding:14px}
+.guide-method-label{font-size:12px;font-weight:700;color:var(--pink);margin-bottom:8px}
+.usage-steps{display:flex;flex-direction:column;gap:12px;margin-top:10px}
+.usage-step{display:flex;gap:14px;background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:12px;padding:14px}
+.usage-step-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.usage-step-title{font-size:14px;font-weight:700;margin-bottom:4px}
+.usage-step-desc{font-size:13px;color:var(--muted);line-height:1.6}
+.trouble-list{display:flex;flex-direction:column;gap:8px}
+.trouble-item{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:border-color .2s}
+.trouble-item:hover,.trouble-item.open{border-color:rgba(255,45,85,0.25)}
+.trouble-q{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;font-size:14px;font-weight:600;gap:12px}
+.trouble-a{display:none;padding:0 18px 14px;font-size:13px;color:var(--muted);line-height:1.7;border-top:1px solid var(--border);padding-top:12px}
+.trouble-item.open .trouble-a{display:block}
+.trouble-item.open .faq-arrow{transform:rotate(180deg);color:var(--pink)}
+
+/* ── SETUP GUIDE END ── */
+
 </style>
 </head>
 <body>
@@ -263,6 +305,7 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:48px 20
     <a class="nav-link" onclick="showPage('home')">Home</a>
     <a class="nav-link" onclick="showPage('about')">About Us</a>
     <a class="nav-link" onclick="showPage('blog')">Blog</a>
+    <a class="nav-link" onclick="showPage('setup')">📖 Setup Guide</a>
     <a class="nav-link" onclick="showPage('pricing')">Pricing</a>
     <a class="nav-link nav-cta" onclick="scrollToDownload()">⬇ Download Free</a>
   </div>
@@ -642,6 +685,327 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:48px 20
   <div class="page-nav-footer"><a onclick="showPage('home')">← Back to Home</a> · <a onclick="showPage('about')">About</a> · <a onclick="showPage('pricing')">Pricing</a></div>
 </div>
 
+<!-- ═══════════════════════════════════ SETUP GUIDE PAGE ═══════════════════════════════════ -->
+<div id="setupPage" class="page">
+
+  <div style="text-align:center;padding:40px 0 40px">
+    <div class="section-badge">Installation Guide</div>
+    <div class="section-title">How to <span class="grad">Download & Use</span> ShortsCutter</div>
+    <p style="color:var(--muted);font-size:16px;max-width:560px;margin:0 auto">Follow these simple steps to get ShortsCutter running on your PC in under 10 minutes.</p>
+  </div>
+
+  <!-- OS Selector -->
+  <div style="display:flex;justify-content:center;gap:10px;margin-bottom:40px">
+    <button class="os-btn active" id="osWin" onclick="switchOS('win')">🪟 Windows</button>
+    <button class="os-btn" id="osMac" onclick="switchOS('mac')">🍎 macOS</button>
+  </div>
+
+  <!-- WINDOWS GUIDE -->
+  <div id="winGuide">
+
+    <!-- Phase 1 -->
+    <div class="guide-phase">
+      <div class="guide-phase-header">
+        <div class="guide-phase-num">Phase 1</div>
+        <div class="guide-phase-title">Install Requirements <span class="guide-time">~5 minutes</span></div>
+      </div>
+
+      <div class="guide-step">
+        <div class="guide-step-num">1</div>
+        <div class="guide-step-body">
+          <div class="guide-step-title">Install Python 3.11</div>
+          <p class="guide-step-desc">Python chalata hai ShortsCutter ko. <strong style="color:var(--red)">Important: Python 3.11 hi download karo — 3.12+ ya 3.14 mein problems aa sakti hain.</strong></p>
+          <a href="https://www.python.org/downloads/release/python-3119/" target="_blank" class="guide-download-btn">⬇ Download Python 3.11.9</a>
+          <div class="guide-tip">
+            <div class="guide-tip-icon">⚠️</div>
+            <div>Install karte waqt <strong>"Add Python to PATH"</strong> checkbox zaroor tick karo — warna kuch kaam nahi karega!</div>
+          </div>
+          <div class="guide-verify">
+            <div class="guide-verify-label">✅ Verify karo — PowerShell mein ye type karo:</div>
+            <div class="code-block">python --version</div>
+            <div class="guide-verify-expect">Expected: <code>Python 3.11.x</code></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-step">
+        <div class="guide-step-num">2</div>
+        <div class="guide-step-body">
+          <div class="guide-step-title">Install FFmpeg</div>
+          <p class="guide-step-desc">FFmpeg video cutting ke liye use hota hai. PowerShell mein ye command chalao:</p>
+          <div class="code-block">winget install ffmpeg</div>
+          <div class="guide-tip">
+            <div class="guide-tip-icon">💡</div>
+            <div>Install hone ke baad PowerShell <strong>band karke dobara kholo</strong> — warna FFmpeg nahi milega.</div>
+          </div>
+          <div class="guide-verify">
+            <div class="guide-verify-label">✅ Verify karo:</div>
+            <div class="code-block">ffmpeg -version</div>
+            <div class="guide-verify-expect">Expected: <code>ffmpeg version 7.x.x ...</code></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-step">
+        <div class="guide-step-num">3</div>
+        <div class="guide-step-body">
+          <div class="guide-step-title">Install Visual C++ Redistributable</div>
+          <p class="guide-step-desc">Ye AI subtitle feature ke liye zaruri hai.</p>
+          <a href="https://aka.ms/vs/17/release/vc_redist.x64.exe" target="_blank" class="guide-download-btn">⬇ Download VC++ Redistributable</a>
+          <p style="font-size:12px;color:var(--muted);margin-top:8px">Download hone ke baad install karo aur PC restart karo.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="guide-phase">
+      <div class="guide-phase-header">
+        <div class="guide-phase-num">Phase 2</div>
+        <div class="guide-phase-title">Download & Setup ShortsCutter <span class="guide-time">~3 minutes</span></div>
+      </div>
+
+      <div class="guide-step">
+        <div class="guide-step-num">4</div>
+        <div class="guide-step-body">
+          <div class="guide-step-title">ShortsCutter Download Karo</div>
+          <p class="guide-step-desc">ZIP file download karo aur apne PC par kisi folder mein extract karo — jaise <code>C:\Users\TUMHARA_NAME\shortscutter\</code></p>
+          <a href="#" class="guide-download-btn guide-download-main">⬇ Download ShortsCutter v1.0 — Free</a>
+          <div class="guide-tip">
+            <div class="guide-tip-icon">📁</div>
+            <div>ZIP extract karne ke baad folder mein ye files hongi: <code>app.py</code>, <code>index.html</code></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-step">
+        <div class="guide-step-num">5</div>
+        <div class="guide-step-body">
+          <div class="guide-step-title">Python Libraries Install Karo</div>
+          <p class="guide-step-desc">PowerShell kholo aur ye <strong>ek command</strong> chalao — sab kuch install ho jayega:</p>
+          <div class="code-block">pip install flask flask-cors yt-dlp scipy numpy openai-whisper</div>
+          <div class="guide-tip">
+            <div class="guide-tip-icon">⏳</div>
+            <div>Pehli baar mein 5-10 minute lag sakte hain — internet se download hoga. Wait karo.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-step">
+        <div class="guide-step-num">6</div>
+        <div class="guide-step-body">
+          <div class="guide-step-title">Optional: Face Tracking Install Karo</div>
+          <p class="guide-step-desc">Agar AI face tracking use karna hai to ye bhi install karo (Pro feature):</p>
+          <div class="code-block">pip install mediapipe opencv-python</div>
+          <div class="guide-tip">
+            <div class="guide-tip-icon">ℹ️</div>
+            <div>Face tracking optional hai — bina is ke bhi ShortsCutter poori tarah kaam karta hai.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="guide-phase">
+      <div class="guide-phase-header">
+        <div class="guide-phase-num">Phase 3</div>
+        <div class="guide-phase-title">ShortsCutter Chalao 🚀 <span class="guide-time">Every time you use it</span></div>
+      </div>
+
+      <div class="guide-step">
+        <div class="guide-step-num">7</div>
+        <div class="guide-step-body">
+          <div class="guide-step-title">PowerShell Kholo Shortscutter Folder Mein</div>
+          <p class="guide-step-desc">2 tarike hain:</p>
+          <div class="guide-methods">
+            <div class="guide-method">
+              <div class="guide-method-label">Method A — File Explorer se</div>
+              <ol style="color:var(--muted);font-size:13px;line-height:2;padding-left:18px">
+                <li>ShortsCutter folder kholo</li>
+                <li>Address bar mein click karo</li>
+                <li>Type karo: <code>powershell</code></li>
+                <li>Enter dabao</li>
+              </ol>
+            </div>
+            <div class="guide-method">
+              <div class="guide-method-label">Method B — Command se</div>
+              <div class="code-block">cd C:\Users\TUMHARA_NAME\shortscutter</div>
+              <p style="font-size:12px;color:var(--muted);margin-top:6px">TUMHARA_NAME ki jagah apna Windows username dalо</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-step">
+        <div class="guide-step-num">8</div>
+        <div class="guide-step-body">
+          <div class="guide-step-title">Server Start Karo</div>
+          <p class="guide-step-desc">ShortsCutter folder mein PowerShell mein ye command chalao:</p>
+          <div class="code-block">python app.py</div>
+          <div class="guide-tip guide-tip-success">
+            <div class="guide-tip-icon">✅</div>
+            <div>Aapko ye dikh ega:<br><code style="color:var(--green)">ShortsCutter is starting...<br>Open your browser at: http://localhost:5000</code></div>
+          </div>
+          <div class="guide-tip">
+            <div class="guide-tip-icon">⚠️</div>
+            <div>PowerShell band mat karo — server chalte rehna chahiye. Use karte waqt minimized rakh sakte ho.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-step">
+        <div class="guide-step-num">9</div>
+        <div class="guide-step-body">
+          <div class="guide-step-title">Browser Mein Kholo</div>
+          <p class="guide-step-desc">Chrome, Edge, ya Firefox mein ye URL type karo:</p>
+          <div class="code-block" style="font-size:18px;text-align:center;color:var(--green)">http://localhost:5000</div>
+          <div class="guide-tip guide-tip-success">
+            <div class="guide-tip-icon">🎉</div>
+            <div><strong>ShortsCutter ready hai!</strong> Header mein <strong style="color:var(--green)">"All Systems Ready"</strong> green dikhega.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-step">
+        <div class="guide-step-num">10</div>
+        <div class="guide-step-body">
+          <div class="guide-step-title">Apna Pehla Short Banao!</div>
+          <p class="guide-step-desc">Ab ShortsCutter use karna bilkul simple hai:</p>
+          <div class="usage-steps">
+            <div class="usage-step">
+              <div class="usage-step-icon" style="background:rgba(255,45,85,0.15)">1️⃣</div>
+              <div>
+                <div class="usage-step-title">YouTube URL Paste Karo</div>
+                <div class="usage-step-desc">Kisi bhi YouTube video ka link copy karke input mein paste karo — thumbnail automatically dikhega</div>
+              </div>
+            </div>
+            <div class="usage-step">
+              <div class="usage-step-icon" style="background:rgba(124,58,237,0.15)">2️⃣</div>
+              <div>
+                <div class="usage-step-title">Settings Choose Karo</div>
+                <div class="usage-step-desc">Clips ki sankhya (1-3 free, 1-15 Pro), quality (720p free, 4K Pro), subtitles, language choose karo</div>
+              </div>
+            </div>
+            <div class="usage-step">
+              <div class="usage-step-icon" style="background:rgba(0,245,160,0.15)">3️⃣</div>
+              <div>
+                <div class="usage-step-title">"Generate Shorts" Click Karo</div>
+                <div class="usage-step-desc">AI video download karega, best moments dhundega, clips banayega — 2-5 minute mein ready</div>
+              </div>
+            </div>
+            <div class="usage-step">
+              <div class="usage-step-icon" style="background:rgba(255,200,0,0.15)">4️⃣</div>
+              <div>
+                <div class="usage-step-title">Download & Upload</div>
+                <div class="usage-step-desc">Viral Score dekho, clips preview karo, download karo — YouTube Shorts, Instagram Reels, TikTok par upload karo!</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Troubleshooting -->
+    <div class="guide-phase">
+      <div class="guide-phase-header">
+        <div class="guide-phase-num">🔧</div>
+        <div class="guide-phase-title">Common Problems & Fixes</div>
+      </div>
+
+      <div class="trouble-list">
+        <div class="trouble-item" onclick="toggleTrouble(this)">
+          <div class="trouble-q"><span>❌ "python is not recognized" error</span><span class="faq-arrow">▼</span></div>
+          <div class="trouble-a">Python PATH mein nahi add hua. Fix: Python uninstall karo → dobara install karo → <strong>"Add Python to PATH"</strong> tick karo → PowerShell restart karo.</div>
+        </div>
+        <div class="trouble-item" onclick="toggleTrouble(this)">
+          <div class="trouble-q"><span>❌ "ffmpeg is not recognized" error</span><span class="faq-arrow">▼</span></div>
+          <div class="trouble-a">PowerShell restart nahi kiya. FFmpeg install hone ke baad PowerShell band karke naya kholo. Agar phir bhi na mile: <code>winget install ffmpeg</code> dobara chalao.</div>
+        </div>
+        <div class="trouble-item" onclick="toggleTrouble(this)">
+          <div class="trouble-q"><span>❌ "Missing Dependencies" status badge</span><span class="faq-arrow">▼</span></div>
+          <div class="trouble-a">FFmpeg ya yt-dlp properly install nahi hua. PowerShell mein ye chalao: <code>pip install yt-dlp</code> aur <code>winget install ffmpeg</code> phir server restart karo.</div>
+        </div>
+        <div class="trouble-item" onclick="toggleTrouble(this)">
+          <div class="trouble-q"><span>❌ "Ready (Captions unavailable)" dikh raha hai</span><span class="faq-arrow">▼</span></div>
+          <div class="trouble-a">Whisper install nahi hua ya torch DLL error hai. Fix: <code>pip uninstall torch -y</code> phir <code>pip install torch --index-url https://download.pytorch.org/whl/cpu</code> phir <code>pip install openai-whisper</code></div>
+        </div>
+        <div class="trouble-item" onclick="toggleTrouble(this)">
+          <div class="trouble-q"><span>❌ YouTube "Sign in to confirm you're not a bot" error</span><span class="faq-arrow">▼</span></div>
+          <div class="trouble-a">YouTube bot detection. Fix: Chrome mein YouTube par login karo → "Get cookies.txt LOCALLY" extension install karo → cookies.txt export karo → shortscutter folder mein rakho → server restart karo.</div>
+        </div>
+        <div class="trouble-item" onclick="toggleTrouble(this)">
+          <div class="trouble-q"><span>❌ Video bahut slow cut ho raha hai</span><span class="faq-arrow">▼</span></div>
+          <div class="trouble-a">Subtitles ya Face Tracking ON hone se processing slow hoti hai — ye CPU par run karta hai. Bina subtitles ke try karo pehle. Zyada RAM aur faster CPU se speed improve hogi.</div>
+        </div>
+        <div class="trouble-item" onclick="toggleTrouble(this)">
+          <div class="trouble-q"><span>❌ "Lost connection to server" error</span><span class="faq-arrow">▼</span></div>
+          <div class="trouble-a">Server band ho gaya. PowerShell mein dobara <code>python app.py</code> chalao phir browser mein <code>Ctrl+Shift+R</code> karo.</div>
+        </div>
+        <div class="trouble-item" onclick="toggleTrouble(this)">
+          <div class="trouble-q"><span>❌ Downloaded video play nahi ho rahi</span><span class="faq-arrow">▼</span></div>
+          <div class="trouble-a">VLC Media Player install karo — ye sab formats support karta hai: <a href="https://www.videolan.org/vlc/" target="_blank" style="color:var(--pink)">videolan.org/vlc</a>. Ya latest app.py download karo jo Windows-compatible format mein export karta hai.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end winGuide -->
+
+  <!-- MAC GUIDE -->
+  <div id="macGuide" style="display:none">
+    <div class="guide-phase">
+      <div class="guide-phase-header">
+        <div class="guide-phase-num">Phase 1</div>
+        <div class="guide-phase-title">Install Requirements <span class="guide-time">~5 minutes</span></div>
+      </div>
+
+      <div class="guide-step">
+        <div class="guide-step-num">1</div>
+        <div class="guide-step-body">
+          <div class="guide-step-title">Install Homebrew (Package Manager)</div>
+          <p class="guide-step-desc">Terminal kholo (Spotlight → "Terminal") aur ye paste karo:</p>
+          <div class="code-block">/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</div>
+        </div>
+      </div>
+
+      <div class="guide-step">
+        <div class="guide-step-num">2</div>
+        <div class="guide-step-body">
+          <div class="guide-step-title">Install Python 3.11 & FFmpeg</div>
+          <div class="code-block">brew install python@3.11 ffmpeg</div>
+          <div class="guide-verify">
+            <div class="guide-verify-label">✅ Verify karo:</div>
+            <div class="code-block">python3 --version && ffmpeg -version</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-step">
+        <div class="guide-step-num">3</div>
+        <div class="guide-step-body">
+          <div class="guide-step-title">Python Libraries Install Karo</div>
+          <div class="code-block">pip3 install flask flask-cors yt-dlp scipy numpy openai-whisper</div>
+        </div>
+      </div>
+
+      <div class="guide-step">
+        <div class="guide-step-num">4</div>
+        <div class="guide-step-body">
+          <div class="guide-step-title">ShortsCutter Download & Chalao</div>
+          <a href="#" class="guide-download-btn guide-download-main">⬇ Download ShortsCutter v1.0 — Free</a>
+          <p style="font-size:13px;color:var(--muted);margin-top:12px">Extract karo → Terminal mein folder open karo → chalao:</p>
+          <div class="code-block">python3 app.py</div>
+          <p style="font-size:13px;color:var(--muted);margin-top:8px">Browser mein: <code style="color:var(--green)">http://localhost:5000</code></p>
+        </div>
+      </div>
+    </div>
+  </div><!-- end macGuide -->
+
+  <div class="page-nav-footer">
+    <a onclick="showPage('home')">← Back to Home</a> ·
+    <a onclick="showPage('pricing')">Pricing</a> ·
+    <a href="mailto:support@cortex.ai">support@cortex.ai</a>
+  </div>
+</div>
+
 <!-- ═══════════════════════════════════ POLICY PAGES ═══════════════════════════════════ -->
 <div id="policyPage" class="page">
   <div id="policyContent"></div>
@@ -664,6 +1028,7 @@ footer{background:var(--card);border-top:1px solid var(--border);padding:48px 20
       <div class="footer-col">
         <h4>Product</h4>
         <a onclick="showPage('home');scrollToDownload()">Download</a>
+        <a onclick="showPage('setup')">Setup Guide</a>
         <a onclick="showPage('pricing')">Pricing</a>
         <a onclick="showPage('blog')">Blog</a>
         <a onclick="showPage('about')">About Us</a>
@@ -706,6 +1071,21 @@ function scrollToDownload() {
     const el = document.getElementById('download');
     if (el) el.scrollIntoView({behavior:'smooth'});
   }, 100);
+}
+
+// ── OS Switcher
+function switchOS(os) {
+  document.getElementById('winGuide').style.display = os === 'win' ? 'block' : 'none';
+  document.getElementById('macGuide').style.display = os === 'mac' ? 'block' : 'none';
+  document.getElementById('osWin').classList.toggle('active', os === 'win');
+  document.getElementById('osMac').classList.toggle('active', os === 'mac');
+}
+
+// ── Troubleshooting accordion
+function toggleTrouble(item) {
+  const open = item.classList.contains('open');
+  document.querySelectorAll('.trouble-item.open').forEach(i => i.classList.remove('open'));
+  if (!open) item.classList.add('open');
 }
 
 // ── FAQ
