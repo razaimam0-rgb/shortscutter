@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShortsCutter by Cortex — Free AI YouTube Shorts Generator</title>
+<meta name="description" content="Turn any YouTube video into viral Shorts in seconds. AI auto-cuts best moments, adds captions in 16 languages, face tracking & more. Download free. By Cortex.">
+<meta name="keywords" content="youtube shorts generator free, ai shorts cutter, auto captions shorts, viral shorts tool, cortex shortscutter download">
+<meta name="author" content="Cortex">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ShortsCutter by Cortex — Free AI YouTube Shorts Generator">
+<meta property="og:description" content="Turn any YouTube video into viral Shorts in seconds. Download free — runs on your PC.">
+<meta property="og:url" content="https://shortscutter.com">
+<meta property="og:site_name" content="ShortsCutter by Cortex">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ShortsCutter — Free AI Shorts Generator by Cortex">
+<meta name="twitter:description" content="AI-powered YouTube Shorts generator. Free download. No cloud, no account.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "ShortsCutter",
+  "operatingSystem": "Windows, macOS",
+  "applicationCategory": "VideoApplication",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "INR"},
+  "publisher": {"@type": "Organization", "name": "Cortex", "url": "https://cortex.ai"},
+  "description": "Free AI-powered YouTube Shorts generator. Auto-cuts viral moments, captions, face tracking."
+}
+</script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23000'/><rect width='100' height='100' rx='18' fill='url(%23g)' opacity='.9'/><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23FF2D55'/><stop offset='1' stop-color='%237C3AED'/></linearGradient></defs><text x='50' y='62' font-size='52' font-family='Arial' font-weight='900' fill='white' text-anchor='middle'>SC</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #08080E;
+  --card: #111118;
+  --border: rgba(255,255,255,0.08);
+  --text: #F0F0F8;
+  --muted: rgba(240,240,248,0.5);
+  --red: #FF2D55;
+  --purple: #7C3AED;
+  --green: #00F5A0;
+  --pink: #FF2D55;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 32px;background:rgba(8,8,14,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--text)}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-link{background:none;border:none;color:var(--muted);font-size:14px;font-weight:500;padding:8px 14px;border-radius:8px;cursor:pointer;text-decoration:none;transition:all .2s}
+.nav-link:hover{color:var(--text);background:rgba(255,255,255,0.06)}
+.nav-cta{background:linear-gradient(135deg,var(--red),var(--purple));color:white !important;font-weight:700;border-radius:10px;padding:9px 18px}
+.nav-cta:hover{opacity:.9;transform:translateY(-1px)}
+.hamburger{display:none;background:none;border:1px solid var(--border);border-radius:8px;padding:7px 10px;cursor:pointer;color:var(--text);font-size:16px}
+@media(max-width:720px){
+  .nav-links{display:none;position:fixed;top:60px;left:0;right:0;background:rgba(8,8,14,.97);flex-direction:column;padding:16px;border-bottom:1px solid var(--border);z-index:99}
+  .nav-links.open{display:flex}
+  .hamburger{display:block}
+  nav{padding:14px 20px}
+}
+
+/* ── HERO ── */
+.hero{text-align:center;padding:90px 20px 60px;max-width:900px;margin:0 auto;position:relative}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(0,245,160,0.1);border:1px solid rgba(0,245,160,0.2);border-radius:20px;padding:7px 16px;font-size:13px;font-weight:600;color:var(--green);margin-bottom:24px}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(36px,6vw,68px);font-weight:800;line-height:1.1;margin-bottom:20px}
+.grad{background:linear-gradient(135deg,var(--red),var(--purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{color:var(--muted);font-size:18px;max-width:560px;margin:0 auto 36px;line-height:1.7}
+.hero-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:48px}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--red),var(--purple));color:white;border:none;border-radius:14px;padding:16px 32px;font-size:16px;font-weight:700;cursor:pointer;text-decoration:none;transition:all .3s;box-shadow:0 8px 32px rgba(255,45,85,.3)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(255,45,85,.45)}
+.btn-secondary{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.06);color:var(--text);border:1px solid var(--border);border-radius:14px;padding:16px 28px;font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .3s}
+.btn-secondary:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,.2)}
+
+/* Trust row */
+.trust-row{display:flex;align-items:center;justify-content:center;gap:0;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:16px;padding:18px 24px;flex-wrap:wrap;max-width:680px;margin:0 auto}
+.trust-item{display:flex;align-items:center;gap:10px;padding:6px 20px}
+.trust-icon{font-size:20px}
+.trust-title{font-size:13px;font-weight:700}
+.trust-sub{font-size:11px;color:var(--muted)}
+.trust-div{width:1px;height:32px;background:var(--border);flex-shrink:0}
+@media(max-width:600px){.trust-row{gap:8px}.trust-div{display:none}.trust-item{padding:6px 10px}}
+
+/* ── VIDEO DEMO AREA ── */
+.demo-section{max-width:900px;margin:80px auto;padding:0 20px;text-align:center}
+.demo-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:16px}
+.demo-window{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.demo-step{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:24px;text-align:center;position:relative}
+.demo-step-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 14px}
+.ds-red{background:rgba(255,45,85,0.15)}
+.ds-purple{background:rgba(124,58,237,0.15)}
+.ds-green{background:rgba(0,245,160,0.15)}
+.demo-step h3{font-size:15px;font-weight:700;margin-bottom:6px}
+.demo-step p{font-size:13px;color:var(--muted);line-height:1.6}
+.demo-arrow{position:absolute;right:-24px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:20px;z-index:1}
+@media(max-width:720px){.demo-window{grid-template-columns:1fr}.demo-arrow{display:none}}
+
+/* ── SECTION COMMON ── */
+.section{max-width:1000px;margin:0 auto;padding:80px 20px}
+.section-badge{display:inline-block;background:linear-gradient(135deg,rgba(255,45,85,.12),rgba(124,58,237,.12));border:1px solid rgba(255,45,85,.2);border-radius:20px;padding:6px 16px;font-size:11px;font-weight:700;color:var(--pink);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px}
+.section-title{font-family:'Syne',sans-serif;font-size:clamp(26px,4vw,38px);font-weight:800;margin-bottom:48px}
+
+/* ── FEATURES ── */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:900px){.feat-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.feat-grid{grid-template-columns:1fr}}
+.feat-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px;transition:all .3s}
+.feat-card:hover{border-color:rgba(255,45,85,.25);transform:translateY(-3px);box-shadow:0 8px 30px rgba(255,45,85,.08)}
+.feat-card-wide{grid-column:span 2}
+@media(max-width:500px){.feat-card-wide{grid-column:span 1}}
+.feat-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px}
+.fi-red{background:rgba(255,45,85,.15)}
+.fi-purple{background:rgba(124,58,237,.15)}
+.fi-blue{background:rgba(59,158,255,.15)}
+.fi-green{background:rgba(0,245,160,.15)}
+.fi-yellow{background:rgba(255,200,0,.15)}
+.feat-card h3{font-size:16px;font-weight:700;margin-bottom:8px}
+.feat-card p{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:14px}
+.feat-tags{display:flex;gap:6px;flex-wrap:wrap}
+.feat-tag{font-size:10px;padding:3px 10px;border-radius:20px;background:rgba(255,255,255,.06);color:var(--muted)}
+
+/* Viral score demo */
+.vs-demo{display:flex;flex-direction:column;gap:8px;margin:12px 0}
+.vs-row{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--muted)}
+.vs-row>span:first-child{width:48px;flex-shrink:0}
+.vs-track{flex:1;height:8px;border-radius:8px;background:rgba(255,255,255,.06);overflow:hidden}
+.vs-bar{height:100%;border-radius:8px}
+.vs-pct{width:36px;text-align:right;font-weight:700;flex-shrink:0}
+
+/* ── PRICING ── */
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+@media(max-width:800px){.pricing-grid{grid-template-columns:1fr}}
+.price-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px;position:relative;transition:all .3s}
+.price-card:hover{transform:translateY(-3px)}
+.price-featured{border-color:rgba(255,45,85,.35);background:linear-gradient(135deg,rgba(255,45,85,.06),rgba(124,58,237,.06))}
+.price-popular{display:inline-block;background:linear-gradient(135deg,var(--red),var(--purple));color:white;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;margin-bottom:12px}
+.price-name{font-size:15px;font-weight:700;margin-bottom:8px}
+.price-amount{font-family:'Syne',sans-serif;font-size:40px;font-weight:800;margin-bottom:4px}
+.price-period{font-size:15px;font-weight:400;color:var(--muted)}
+.price-desc{font-size:12px;color:var(--muted);margin-bottom:20px}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:24px}
+.price-features li{font-size:13px;color:var(--muted)}
+.price-features li.on{color:var(--text)}
+.price-btn{display:block;text-align:center;border-radius:12px;padding:13px;font-size:14px;font-weight:700;text-decoration:none;cursor:pointer;transition:all .2s;border:none}
+.price-btn-free{background:rgba(255,255,255,.07);border:1px solid var(--border);color:var(--text)}
+.price-btn-free:hover{background:rgba(255,255,255,.12)}
+.price-btn-pro{background:linear-gradient(135deg,var(--red),var(--purple));color:white;box-shadow:0 6px 24px rgba(255,45,85,.3)}
+.price-btn-pro:hover{opacity:.9;transform:translateY(-2px)}
+
+/* License activate box */
+.license-box{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-top:32px;text-align:center}
+.license-box h3{font-size:16px;font-weight:700;margin-bottom:6px}
+.license-box p{color:var(--muted);font-size:13px;margin-bottom:16px}
+.license-input-row{display:flex;gap:10px;max-width:480px;margin:0 auto;flex-wrap:wrap}
+.license-input{flex:1;min-width:0;height:46px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid var(--border);color:var(--text);font-size:14px;padding:0 16px;outline:none;font-family:monospace;letter-spacing:.04em}
+.license-input:focus{border-color:var(--purple)}
+.license-btn{height:46px;padding:0 20px;border-radius:12px;background:linear-gradient(135deg,var(--red),var(--purple));color:white;border:none;font-weight:700;cursor:pointer;white-space:nowrap}
+#licenseMsg{margin-top:10px;font-size:13px}
+
+/* ── STATS BAR ── */
+.stats-bar{display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:20px;padding:28px 32px;flex-wrap:wrap;margin:0 20px}
+.stat-item{text-align:center;padding:0 28px}
+.stat-num{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;background:linear-gradient(135deg,var(--red),var(--purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat-label{font-size:12px;color:var(--muted);margin-top:3px}
+.stat-div{width:1px;height:40px;background:var(--border)}
+@media(max-width:720px){.stats-bar{gap:16px}.stat-div{display:none}.stat-item{padding:8px 16px}}
+
+/* ── TESTIMONIALS ── */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:720px){.testi-grid{grid-template-columns:1fr}}
+.testi-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px;position:relative;transition:all .3s}
+.testi-card:hover{border-color:rgba(255,45,85,.2);transform:translateY(-2px)}
+.testi-card::before{content:'"';position:absolute;top:12px;right:18px;font-size:60px;color:rgba(255,45,85,.08);font-family:Georgia,serif;line-height:1}
+.testi-stars{color:#FFB800;font-size:13px;letter-spacing:2px;margin-bottom:10px}
+.testi-text{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px}
+.testi-author{display:flex;align-items:center;gap:10px}
+.testi-av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:white;flex-shrink:0}
+.testi-name{font-size:13px;font-weight:700}
+.testi-role{font-size:11px;color:var(--muted)}
+
+/* ── FAQ ── */
+.faq-list{display:flex;flex-direction:column;gap:10px}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:border-color .2s}
+.faq-item:hover,.faq-item.open{border-color:rgba(255,45,85,.3)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;font-size:15px;font-weight:600;gap:16px}
+.faq-arrow{color:var(--muted);font-size:12px;transition:transform .25s;flex-shrink:0}
+.faq-item.open .faq-arrow{transform:rotate(180deg);color:var(--pink)}
+.faq-a{display:none;padding:0 22px 18px;font-size:14px;color:var(--muted);line-height:1.7;border-top:1px solid var(--border);padding-top:14px}
+.faq-item.open .faq-a{display:block}
+
+/* ── CTA ── */
+.cta-section{text-align:center;padding:80px 20px}
+.cta-card{max-width:720px;margin:0 auto;background:linear-gradient(135deg,rgba(255,45,85,.08),rgba(124,58,237,.08));border:1px solid rgba(255,45,85,.2);border-radius:24px;padding:60px 40px;position:relative;overflow:hidden}
+.cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400px;height:200px;background:radial-gradient(ellipse,rgba(255,45,85,.12),transparent 70%);pointer-events:none}
+.cta-badge{display:inline-block;background:rgba(255,45,85,.12);border:1px solid rgba(255,45,85,.25);border-radius:20px;padding:6px 16px;font-size:12px;font-weight:700;color:var(--pink);text-transform:uppercase;letter-spacing:.06em;margin-bottom:18px}
+.cta-title{font-family:'Syne',sans-serif;font-size:clamp(26px,4vw,42px);font-weight:800;margin-bottom:14px}
+.cta-sub{color:var(--muted);font-size:16px;max-width:460px;margin:0 auto 32px;line-height:1.7}
+.cta-hint{margin-top:16px;font-size:13px;color:var(--muted)}
+
+/* ── FOOTER ── */
+footer{background:var(--card);border-top:1px solid var(--border);padding:48px 20px 32px;margin-top:80px}
+.footer-inner{max-width:1000px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+@media(max-width:720px){.footer-top{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.footer-top{grid-template-columns:1fr}}
+.footer-brand h2{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;margin-bottom:8px}
+.footer-brand p{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px;max-width:260px}
+.footer-badges-row{display:flex;gap:8px;flex-wrap:wrap}
+.footer-badge{font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px;background:rgba(255,255,255,.05);border:1px solid var(--border);color:var(--muted)}
+.footer-col h4{font-size:13px;font-weight:700;margin-bottom:14px;color:var(--text)}
+.footer-col a{display:block;font-size:13px;color:var(--muted);text-decoration:none;margin-bottom:9px;transition:color .2s;cursor:pointer}
+.footer-col a:hover{color:var(--pink)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-copy{font-size:12px;color:rgba(255,255,255,.2)}
+.footer-ai-note{font-size:11px;color:rgba(255,255,255,.18)}
+
+/* ── MODALS ── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(5,5,10,.92);backdrop-filter:blur(10px);z-index:300;overflow-y:auto;justify-content:center;align-items:flex-start}
+.modal-overlay.open{display:flex}
+.modal-box{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px;position:relative;max-width:700px;width:calc(100% - 40px);margin:40px auto}
+.modal-close{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.07);border:none;color:var(--text);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px}
+.modal-title{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;margin-bottom:6px}
+.modal-sub{color:var(--muted);font-size:14px;margin-bottom:28px}
+.policy-section h3{font-size:16px;font-weight:700;margin:20px 0 8px}
+.policy-section p,.policy-section li{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:8px}
+.policy-section ul{padding-left:18px}
+
+/* ── DOWNLOAD SECTION ── */
+.download-section{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:40px;max-width:720px;margin:0 auto;text-align:center}
+.download-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0;text-align:left}
+@media(max-width:600px){.download-steps{grid-template-columns:1fr}}
+.dl-step{background:rgba(255,255,255,.03);border-radius:12px;padding:18px}
+.dl-step-num{font-size:12px;font-weight:700;color:var(--pink);margin-bottom:6px}
+.dl-step h4{font-size:14px;font-weight:700;margin-bottom:4px}
+.dl-step p{font-size:12px;color:var(--muted);line-height:1.6}
+.requirements{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.req-tag{font-size:12px;padding:5px 12px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid var(--border);color:var(--muted)}
+
+/* ── PAGES ── */
+.page{display:none;max-width:960px;margin:0 auto;padding:60px 20px}
+.page.active{display:block}
+#homePage{display:block}
+.page-nav-footer{text-align:center;padding:40px 0 0;font-size:13px;color:var(--muted)}
+.page-nav-footer a{color:var(--muted);cursor:pointer;text-decoration:none}
+.page-nav-footer a:hover{color:var(--pink)}
+
+/* ── MISC ── */
+.separator{height:1px;background:var(--border);margin:80px 20px}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a class="nav-logo" href="#" onclick="showPage('home')">
+    <svg width="28" height="28" viewBox="0 0 100 100"><rect width="100" height="100" rx="14" fill="#FF2D55"/><text x="50" y="64" font-size="56" font-family="Arial" font-weight="900" fill="white" text-anchor="middle">SC</text></svg>
+    ShortsCutter
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a class="nav-link" onclick="showPage('home')">Home</a>
+    <a class="nav-link" onclick="showPage('about')">About Us</a>
+    <a class="nav-link" onclick="showPage('blog')">Blog</a>
+    <a class="nav-link" onclick="showPage('pricing')">Pricing</a>
+    <a class="nav-link nav-cta" onclick="scrollToDownload()">⬇ Download Free</a>
+  </div>
+  <button class="hamburger" id="ham" onclick="toggleNav()">☰</button>
+</nav>
+
+<!-- ═══════════════════════════════════ HOME PAGE ═══════════════════════════════════ -->
+<div id="homePage" class="page active">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-tag">🚀 Trusted by 10,000+ Content Creators</div>
+    <h1>Turn Any Video Into<br><span class="grad">Viral Shorts</span> — Free</h1>
+    <p class="hero-sub">AI automatically finds your best moments, adds captions in 16 languages, and exports perfect vertical clips. Runs 100% on your PC — no cloud, no account.</p>
+    <div class="hero-btns">
+      <a href="#download" class="btn-primary" onclick="scrollToDownload()">⬇ Download Free — Windows & Mac</a>
+      <a href="#" class="btn-secondary" onclick="showPage('pricing')">⚡ See Pro Plans</a>
+    </div>
+    <div class="trust-row">
+      <div class="trust-item"><div class="trust-icon">🛡️</div><div><div class="trust-title">100% Private</div><div class="trust-sub">No uploads to cloud</div></div></div>
+      <div class="trust-div"></div>
+      <div class="trust-item"><div class="trust-icon">✅</div><div><div class="trust-title">No Sign Up</div><div class="trust-sub">Works instantly</div></div></div>
+      <div class="trust-div"></div>
+      <div class="trust-item"><div class="trust-icon">💰</div><div><div class="trust-title">Always Free</div><div class="trust-sub">No hidden charges</div></div></div>
+      <div class="trust-div"></div>
+      <div class="trust-item"><div class="trust-icon">🏢</div><div><div class="trust-title">By Cortex</div><div class="trust-sub">Trusted company</div></div></div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="demo-section">
+    <div class="demo-label">How it works</div>
+    <div class="demo-window">
+      <div class="demo-step">
+        <div class="demo-step-icon ds-red">🔗</div>
+        <h3>Paste URL or Upload</h3>
+        <p>Drop any YouTube link or upload your own video file</p>
+        <div class="demo-arrow">→</div>
+      </div>
+      <div class="demo-step">
+        <div class="demo-step-icon ds-purple">🤖</div>
+        <h3>AI Finds Best Moments</h3>
+        <p>Smart audio analysis detects highest-energy segments automatically</p>
+        <div class="demo-arrow">→</div>
+      </div>
+      <div class="demo-step">
+        <div class="demo-step-icon ds-green">⬇️</div>
+        <h3>Download & Go Viral</h3>
+        <p>Get polished vertical clips with captions and effects — ready to upload</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Free Forever</div></div>
+    <div class="stat-div"></div>
+    <div class="stat-item"><div class="stat-num">15</div><div class="stat-label">Clips Per Video</div></div>
+    <div class="stat-div"></div>
+    <div class="stat-item"><div class="stat-num">16</div><div class="stat-label">Languages</div></div>
+    <div class="stat-div"></div>
+    <div class="stat-item"><div class="stat-num">7</div><div class="stat-label">Caption Styles</div></div>
+    <div class="stat-div"></div>
+    <div class="stat-item"><div class="stat-num">4K</div><div class="stat-label">Max Quality</div></div>
+  </div>
+
+  <!-- FEATURES -->
+  <div class="section">
+    <div style="text-align:center">
+      <div class="section-badge">Everything You Need</div>
+      <div class="section-title">Powerful Features, <span class="grad">Zero Cost</span></div>
+    </div>
+    <div class="feat-grid">
+
+      <div class="feat-card feat-card-wide">
+        <div class="feat-icon fi-red">✂️</div>
+        <h3>Smart Auto-Cutting + Viral Score</h3>
+        <p>AI analyzes audio energy to find your most engaging 15–60 second moments. Every clip gets a <strong style="color:var(--green)">Viral Score</strong> so you know which ones to post first.</p>
+        <div class="vs-demo">
+          <div class="vs-row"><span>Clip 1</span><div class="vs-track"><div class="vs-bar" style="width:92%;background:var(--green)"></div></div><span class="vs-pct" style="color:var(--green)">92%</span></div>
+          <div class="vs-row"><span>Clip 2</span><div class="vs-track"><div class="vs-bar" style="width:74%;background:#FFB347"></div></div><span class="vs-pct" style="color:#FFB347">74%</span></div>
+          <div class="vs-row"><span>Clip 3</span><div class="vs-track"><div class="vs-bar" style="width:58%;background:var(--red)"></div></div><span class="vs-pct" style="color:var(--red)">58%</span></div>
+        </div>
+        <div class="feat-tags"><span class="feat-tag">Auto-detect</span><span class="feat-tag">1–15 clips</span><span class="feat-tag">🔥 Viral Score</span></div>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-icon fi-blue">💬</div>
+        <h3>AI Subtitles — 7 Styles</h3>
+        <p>Auto-generates accurate captions burned into clips. Choose from Static, Beasty, Mozi, Karaoke, Pop-in, Deep Diver, or Popline.</p>
+        <div style="margin:10px 0 14px">
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:4px"><span>English Accuracy</span><span style="color:var(--green);font-weight:700">95%</span></div>
+          <div style="height:6px;background:rgba(255,255,255,.06);border-radius:6px;overflow:hidden"><div style="width:95%;height:100%;background:linear-gradient(90deg,var(--red),var(--green));border-radius:6px"></div></div>
+        </div>
+        <div class="feat-tags"><span class="feat-tag">7 styles</span><span class="feat-tag">Custom colors</span><span class="feat-tag">8 fonts</span></div>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-icon fi-purple">🎯</div>
+        <h3>AI Face Tracking</h3>
+        <p>Auto-detects the main speaker's face and keeps it perfectly centered throughout the clip — no manual cropping needed.</p>
+        <div class="feat-tags"><span class="feat-tag">AI Detection</span><span class="feat-tag">Auto-center</span><span class="feat-tag">Pro</span></div>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-icon fi-green">🌐</div>
+        <h3>16 Languages</h3>
+        <p>Generate subtitles in English, Spanish, French, German, Russian, Arabic, Japanese, Korean, and 8 more languages.</p>
+        <div class="feat-tags"><span class="feat-tag">🇬🇧 EN</span><span class="feat-tag">🇪🇸 ES</span><span class="feat-tag">🇫🇷 FR</span><span class="feat-tag">🇩🇪 DE</span><span class="feat-tag">+12 more</span></div>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-icon fi-yellow">📐</div>
+        <h3>Multiple Aspect Ratios</h3>
+        <p>Export in 9:16 Shorts, 1:1 Square, 16:9 YouTube, 4:5 Instagram, and more — all with center crop, zero black bars.</p>
+        <div class="feat-tags"><span class="feat-tag">9:16</span><span class="feat-tag">1:1</span><span class="feat-tag">16:9</span><span class="feat-tag">4:5</span></div>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-icon fi-red">🔒</div>
+        <h3>100% Private & Local</h3>
+        <p>Everything runs on your own computer. No cloud processing, no data uploads. Your videos never leave your device — ever.</p>
+        <div class="feat-tags"><span class="feat-tag">No cloud</span><span class="feat-tag">No account</span><span class="feat-tag">Private</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="section" style="padding-top:0">
+    <div style="text-align:center">
+      <div class="section-badge">What Creators Say</div>
+      <div class="section-title">Trusted by Creators Worldwide</div>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"ShortsCutter saved me hours every week. I just paste the link and get perfect Shorts in minutes. The karaoke captions are exactly what I needed for my channel."</p>
+        <div class="testi-author">
+          <div class="testi-av" style="background:linear-gradient(135deg,#FF2D55,#FF6B6B)">R</div>
+          <div><div class="testi-name">Rahul M.</div><div class="testi-role">YouTube Food Creator</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Finally a free tool that actually works! No watermark, no account, and the AI subtitle translation is surprisingly accurate. My Shorts views went up 3x."</p>
+        <div class="testi-author">
+          <div class="testi-av" style="background:linear-gradient(135deg,#7C3AED,#A855F7)">S</div>
+          <div><div class="testi-name">Sarah K.</div><div class="testi-role">Social Media Manager</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I was skeptical at first but this tool is legit. Everything runs on my own PC — no data sent anywhere. Privacy matters to me and ShortsCutter delivers."</p>
+        <div class="testi-author">
+          <div class="testi-av" style="background:linear-gradient(135deg,#00F5A0,#0070F3)">A</div>
+          <div><div class="testi-name">Arjun T.</div><div class="testi-role">Tech Educator</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DOWNLOAD -->
+  <div class="section" id="download" style="padding-top:20px">
+    <div style="text-align:center;margin-bottom:32px">
+      <div class="section-badge">Get Started</div>
+      <div class="section-title">Download <span class="grad">ShortsCutter Free</span></div>
+    </div>
+    <div class="download-section">
+      <p style="color:var(--muted);font-size:14px;margin-bottom:24px">ShortsCutter runs locally on your PC — download once, use forever.</p>
+      <div class="download-steps">
+        <div class="dl-step"><div class="dl-step-num">Step 1</div><h4>Download & Install</h4><p>Download the ZIP file and extract it to any folder on your PC</p></div>
+        <div class="dl-step"><div class="dl-step-num">Step 2</div><h4>Run Setup</h4><p>Open PowerShell in the folder and run the one-time setup command</p></div>
+        <div class="dl-step"><div class="dl-step-num">Step 3</div><h4>Start Cutting</h4><p>Run app.py and open localhost:5000 in your browser — done!</p></div>
+      </div>
+      <a href="#" class="btn-primary" style="display:inline-flex;margin-bottom:16px">
+        ⬇ Download ShortsCutter v1.0 — Free
+      </a>
+      <div class="requirements">
+        <span class="req-tag">Windows 10/11</span>
+        <span class="req-tag">Python 3.11+</span>
+        <span class="req-tag">4GB RAM min</span>
+        <span class="req-tag">FFmpeg (included in guide)</span>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:16px">⚠️ AI-generated results may not always be perfect. Review clips before publishing.</p>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section" style="padding-top:20px">
+    <div style="text-align:center">
+      <div class="section-badge">Got Questions?</div>
+      <div class="section-title">Frequently Asked <span class="grad">Questions</span></div>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span>Is ShortsCutter really free?</span><span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Yes, 100% free. ShortsCutter runs entirely on your own computer with no subscriptions, no credits, and no hidden costs — ever. A Pro plan is available for power users who need more clips, higher quality, and advanced features.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span>Do I need to upload my videos anywhere?</span><span class="faq-arrow">▼</span></div>
+        <div class="faq-a">No. Everything runs locally on your PC. Your video files are never uploaded to any server. All processing — cutting, subtitles, face tracking — happens right on your computer.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span>What is the difference between Free and Pro?</span><span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Free users get 3 clips per video, 720p quality, 2 caption styles, and English subtitles only. Pro users get up to 15 clips, 4K quality, all 7 caption styles, 16 subtitle languages, face tracking, and no watermark.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span>How do I activate Pro after paying?</span><span class="faq-arrow">▼</span></div>
+        <div class="faq-a">After payment via Razorpay, you'll receive a license key via email (SC-XXXX-XXXX-XXXX-XXXX). Enter this key in the tool's "Upgrade Pro" section to instantly unlock all Pro features.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span>Which operating systems are supported?</span><span class="faq-arrow">▼</span></div>
+        <div class="faq-a">ShortsCutter works on Windows 10/11 and macOS. Linux support is available for advanced users. Python 3.11 or higher is required.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span>Can I use my own videos instead of YouTube?</span><span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Yes! Switch to "Local Video" mode and upload any MP4, MOV, MKV, or AVI file directly from your computer. All the same AI features work on your own videos.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-card">
+      <div class="cta-glow"></div>
+      <div class="cta-badge">🚀 Free Forever</div>
+      <div class="cta-title">Ready to Go <span class="grad">Viral?</span></div>
+      <p class="cta-sub">Download ShortsCutter free and start creating scroll-stopping Shorts in minutes — no account, no cost, no limits.</p>
+      <a href="#download" class="btn-primary" onclick="scrollToDownload()">✂️ Download Free Now</a>
+      <div class="cta-hint">⚡ AI-powered · 🔒 100% Private · 💰 Always Free</div>
+    </div>
+  </div>
+
+</div><!-- end homePage -->
+
+<!-- ═══════════════════════════════════ PRICING PAGE ═══════════════════════════════════ -->
+<div id="pricingPage" class="page">
+  <div style="text-align:center;padding:60px 0 40px">
+    <div class="section-badge">Simple Pricing</div>
+    <div class="section-title">Start Free, <span class="grad">Upgrade When Ready</span></div>
+    <p style="color:var(--muted);font-size:16px;max-width:500px;margin:0 auto">No surprise charges. Cancel anytime. 7-day refund guarantee.</p>
+  </div>
+
+  <div class="pricing-grid">
+    <!-- Free -->
+    <div class="price-card">
+      <div class="price-name">Free</div>
+      <div class="price-amount">₹0<span class="price-period">/forever</span></div>
+      <div class="price-desc">No credit card required</div>
+      <ul class="price-features">
+        <li class="on">✅ 3 clips per video</li>
+        <li class="on">✅ 720p quality</li>
+        <li class="on">✅ 2 caption styles</li>
+        <li class="on">✅ English subtitles</li>
+        <li class="on">✅ Manual editor</li>
+        <li>❌ Face tracking</li>
+        <li>❌ 4K quality</li>
+        <li>❌ All 16 languages</li>
+      </ul>
+      <a href="#download" class="price-btn price-btn-free" onclick="scrollToDownload()">Download Free</a>
+    </div>
+
+    <!-- Pro Monthly -->
+    <div class="price-card price-featured">
+      <div class="price-popular">🔥 Most Popular</div>
+      <div class="price-name">Pro Monthly</div>
+      <div class="price-amount">₹199<span class="price-period">/month</span></div>
+      <div class="price-desc">Billed monthly. Cancel anytime.</div>
+      <ul class="price-features">
+        <li class="on">✅ 15 clips per video</li>
+        <li class="on">✅ 4K quality downloads</li>
+        <li class="on">✅ All 7 caption styles</li>
+        <li class="on">✅ 16 subtitle languages</li>
+        <li class="on">✅ AI Face tracking</li>
+        <li class="on">✅ No watermark</li>
+        <li class="on">✅ Priority support</li>
+      </ul>
+      <!-- UPDATE THIS LINK with your Razorpay payment link -->
+      <a href="https://rzp.io/l/shortscutter-pro" target="_blank" class="price-btn price-btn-pro">Buy Monthly — ₹199</a>
+    </div>
+
+    <!-- Pro Yearly -->
+    <div class="price-card">
+      <div class="price-name">Pro Yearly</div>
+      <div class="price-amount">₹999<span class="price-period">/year</span></div>
+      <div class="price-desc">Just ₹83/month — Save ₹1389!</div>
+      <ul class="price-features">
+        <li class="on">✅ Everything in Monthly</li>
+        <li class="on">✅ 365 days access</li>
+        <li class="on">✅ Early access to features</li>
+        <li class="on">✅ 15 clips per video</li>
+        <li class="on">✅ 4K quality</li>
+        <li class="on">✅ All 16 languages</li>
+        <li class="on">✅ No watermark</li>
+      </ul>
+      <!-- UPDATE THIS LINK with your Razorpay payment link -->
+      <a href="https://rzp.io/l/shortscutter-yearly" target="_blank" class="price-btn price-btn-pro">Buy Yearly — ₹999</a>
+    </div>
+  </div>
+
+  <div class="license-box" style="max-width:600px;margin:32px auto">
+    <h3>🔑 Already have a License Key?</h3>
+    <p>After payment, you'll receive a license key via email. Enter it in the ShortsCutter app to activate Pro.</p>
+    <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;padding:14px;font-size:13px;color:var(--muted);text-align:left">
+      <strong style="color:var(--text)">How to activate:</strong>
+      <ol style="margin-top:8px;padding-left:18px;line-height:2">
+        <li>Open ShortsCutter app on your PC</li>
+        <li>Click <strong style="color:var(--text)">"⚡ Upgrade Pro"</strong> in the header</li>
+        <li>Enter your license key in the activation box</li>
+        <li>Click <strong style="color:var(--text)">"Activate"</strong> — Pro unlocked instantly!</li>
+      </ol>
+    </div>
+  </div>
+
+  <p style="text-align:center;font-size:12px;color:var(--muted);margin-top:20px">🔒 Secure payment by Razorpay · 7-day refund guarantee · <a href="mailto:support@cortex.ai" style="color:var(--pink)">support@cortex.ai</a></p>
+  <div class="page-nav-footer"><a onclick="showPage('home')">← Back to Home</a></div>
+</div>
+
+<!-- ═══════════════════════════════════ ABOUT PAGE ═══════════════════════════════════ -->
+<div id="aboutPage" class="page">
+  <div style="text-align:center;padding:40px 0 32px">
+    <div class="section-badge">Our Story</div>
+    <div class="section-title">About <span class="grad">Cortex</span></div>
+    <p style="color:var(--muted);font-size:16px;max-width:560px;margin:0 auto">We build powerful free tools that help creators win the content game — without breaking the bank.</p>
+  </div>
+  <div class="policy-section">
+    <h3>Who We Are</h3>
+    <p>Cortex is a technology company focused on building AI-powered creative tools that run locally on your device. We believe the future of content creation is private, fast, and accessible to everyone — not locked behind expensive cloud subscriptions.</p>
+    <p>ShortsCutter is our flagship free tool — born from a simple question: why does turning a great YouTube video into a viral Short require expensive software or complex timelines? We built the answer.</p>
+    <h3>Our Mission</h3>
+    <p>Democratize professional video editing. Give every creator — from a student with a laptop to a small business owner — the same cutting power as a professional studio, completely free.</p>
+    <h3>Privacy First</h3>
+    <p>Every Cortex tool is designed to run on your own machine. Your videos, your data, your content — stays 100% on your device. We have no servers storing your files, ever.</p>
+    <h3>Contact Us</h3>
+    <p>📧 General: <a href="mailto:hello@cortex.ai" style="color:var(--pink)">hello@cortex.ai</a></p>
+    <p>🛠 Support: <a href="mailto:support@cortex.ai" style="color:var(--pink)">support@cortex.ai</a></p>
+    <p>💡 Ideas: <a href="mailto:ideas@cortex.ai" style="color:var(--pink)">ideas@cortex.ai</a></p>
+  </div>
+  <div class="page-nav-footer"><a onclick="showPage('home')">← Back to Home</a> · <a onclick="showPage('blog')">Blog</a> · <a onclick="showPage('pricing')">Pricing</a></div>
+</div>
+
+<!-- ═══════════════════════════════════ BLOG PAGE ═══════════════════════════════════ -->
+<div id="blogPage" class="page">
+  <div style="text-align:center;padding:40px 0 32px">
+    <div class="section-badge">Tips & Guides</div>
+    <div class="section-title">ShortsCutter <span class="grad">Blog</span></div>
+    <p style="color:var(--muted);font-size:16px;max-width:500px;margin:0 auto">Learn how to create viral Shorts, master captions, and grow your channel.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px" id="blogGrid">
+    <!-- Blog cards — add new ones here -->
+    <div class="feat-card">
+      <div class="feat-tag" style="background:rgba(255,45,85,.12);color:var(--pink);padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;display:inline-block;margin-bottom:12px">Guide</div>
+      <h3 style="font-size:17px;margin-bottom:8px">How to Turn Any YouTube Video Into Viral Shorts in 2025</h3>
+      <p style="color:var(--muted);font-size:13px;line-height:1.7;margin-bottom:14px">The complete step-by-step guide to repurposing long-form content into high-performing short clips using AI auto-detection, captions, and the right aspect ratio.</p>
+      <div style="display:flex;gap:14px;font-size:12px;color:var(--muted)"><span>📅 Jun 2025</span><span>8 min read</span></div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-tag" style="background:rgba(124,58,237,.12);color:#A78BFA;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;display:inline-block;margin-bottom:12px">Tips</div>
+      <h3 style="font-size:17px;margin-bottom:8px">7 Caption Styles That Get More Views — Which One is Right for You?</h3>
+      <p style="color:var(--muted);font-size:13px;line-height:1.7;margin-bottom:14px">From Karaoke-style word-by-word highlights to bold Beasty captions — we break down which style performs best for different content types.</p>
+      <div style="display:flex;gap:14px;font-size:12px;color:var(--muted)"><span>📅 Jun 2025</span><span>5 min read</span></div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-tag" style="background:rgba(0,245,160,.1);color:var(--green);padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;display:inline-block;margin-bottom:12px">Strategy</div>
+      <h3 style="font-size:17px;margin-bottom:8px">What is Viral Score? How ShortsCutter Rates Your Clips</h3>
+      <p style="color:var(--muted);font-size:13px;line-height:1.7;margin-bottom:14px">Viral Score is our AI-powered clip rating. Here's exactly how it's calculated and how to use it to pick your best moments every time.</p>
+      <div style="display:flex;gap:14px;font-size:12px;color:var(--muted)"><span>📅 Jun 2025</span><span>4 min read</span></div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-tag" style="background:rgba(59,158,255,.12);color:#60B4FF;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;display:inline-block;margin-bottom:12px">Growth</div>
+      <h3 style="font-size:17px;margin-bottom:8px">Podcast to Shorts: The Ultimate Repurposing Strategy for 2025</h3>
+      <p style="color:var(--muted);font-size:13px;line-height:1.7;margin-bottom:14px">Podcasts are goldmines for short-form content. Learn how to extract the best 60-second moments and post across YouTube, Instagram, and TikTok.</p>
+      <div style="display:flex;gap:14px;font-size:12px;color:var(--muted)"><span>📅 Jun 2025</span><span>7 min read</span></div>
+    </div>
+  </div>
+  <div class="page-nav-footer"><a onclick="showPage('home')">← Back to Home</a> · <a onclick="showPage('about')">About</a> · <a onclick="showPage('pricing')">Pricing</a></div>
+</div>
+
+<!-- ═══════════════════════════════════ POLICY PAGES ═══════════════════════════════════ -->
+<div id="policyPage" class="page">
+  <div id="policyContent"></div>
+  <div class="page-nav-footer"><a onclick="showPage('home')">← Back to Home</a> · <a onclick="showPage('pricing')">Pricing</a> · <a onclick="showPage('about')">About</a></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h2>✂️ ShortsCutter <span style="font-size:14px;font-weight:400;color:var(--pink)">by Cortex</span></h2>
+        <p>Turn any video into viral Shorts — 100% free, 100% local, 100% private.</p>
+        <div class="footer-badges-row">
+          <span class="footer-badge">🔒 No Account</span>
+          <span class="footer-badge">☁️ No Cloud</span>
+          <span class="footer-badge">💰 Always Free</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a onclick="showPage('home');scrollToDownload()">Download</a>
+        <a onclick="showPage('pricing')">Pricing</a>
+        <a onclick="showPage('blog')">Blog</a>
+        <a onclick="showPage('about')">About Us</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a onclick="showPolicy('privacy')">Privacy Policy</a>
+        <a onclick="showPolicy('terms')">Terms of Service</a>
+        <a onclick="showPolicy('refund')">Refund Policy</a>
+        <a onclick="showPolicy('ai')">AI Usage Policy</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="mailto:hello@cortex.ai">hello@cortex.ai</a>
+        <a href="mailto:support@cortex.ai">support@cortex.ai</a>
+        <a onclick="showPolicy('subscription')">Subscription Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Cortex. ShortsCutter — Your videos never leave your device.</div>
+      <div class="footer-ai-note">⚠️ AI results may not always be perfect. Review before publishing.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Navigation
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const el = document.getElementById(page + 'Page');
+  if (el) { el.classList.add('active'); window.scrollTo({top:0,behavior:'smooth'}); }
+  document.getElementById('navLinks').classList.remove('open');
+}
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+function scrollToDownload() {
+  showPage('home');
+  setTimeout(() => {
+    const el = document.getElementById('download');
+    if (el) el.scrollIntoView({behavior:'smooth'});
+  }, 100);
+}
+
+// ── FAQ
+function toggleFaq(item) {
+  const open = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!open) item.classList.add('open');
+}
+
+// ── Policy pages
+const policies = {
+  privacy: {
+    title: 'Privacy Policy',
+    html: `<h3>1. What Data We Collect</h3><p><strong>We collect nothing.</strong> ShortsCutter does not collect, store, transmit, or analyze any personal data, video content, or usage information. There is no account system, no tracking, and no analytics.</p>
+    <h3>2. Your Videos Stay on Your Device</h3><p>All video processing happens entirely on your local computer. Your video files are never uploaded to any server.</p>
+    <h3>3. Third-Party Services</h3><p>ShortsCutter connects to YouTube only to download videos you explicitly request. Payment processing is handled by Razorpay (their privacy policy applies to payment data).</p>
+    <h3>4. Contact</h3><p>privacy@cortex.ai</p>`
+  },
+  terms: {
+    title: 'Terms of Service',
+    html: `<h3>1. Acceptance</h3><p>By using ShortsCutter, you agree to these terms.</p>
+    <h3>2. Permitted Use</h3><p>ShortsCutter is for personal and commercial content creation.</p>
+    <h3>3. Copyright Responsibility</h3><p>You are solely responsible for ensuring you have rights to any video you process. Do not use this tool to infringe copyrights.</p>
+    <h3>4. Prohibited Uses</h3><ul><li>Creating harmful or illegal content</li><li>Redistributing ShortsCutter as your own product</li><li>Violating YouTube's Terms of Service</li></ul>
+    <h3>5. Contact</h3><p>legal@cortex.ai</p>`
+  },
+  refund: {
+    title: 'Refund Policy',
+    html: `<h3>Free Tier</h3><p>The free version of ShortsCutter has no charges — nothing to refund.</p>
+    <h3>Pro Plans</h3><p>If Pro features do not work as described, we offer a full refund within 7 days of purchase. Contact refunds@cortex.ai with your order details.</p>
+    <h3>How to Request</h3><p>Email refunds@cortex.ai with your Razorpay payment ID and reason. We'll process within 3-5 business days.</p>`
+  },
+  subscription: {
+    title: 'Subscription Policy',
+    html: `<h3>Current Model</h3><p>ShortsCutter Pro is available as a monthly (₹199) or yearly (₹999) plan via Razorpay payment links. These are one-time payments, not auto-renewing subscriptions.</p>
+    <h3>License Keys</h3><p>After payment you receive a license key valid for 30 or 365 days. You must repurchase after expiry to continue Pro features.</p>
+    <h3>Our Promise</h3><p>We will never silently charge you or auto-enroll you in any subscription. Contact support@cortex.ai with concerns.</p>`
+  },
+  ai: {
+    title: 'AI Usage Policy',
+    html: `<h3>AI Features</h3><ul><li><strong>Smart Auto-Cutting</strong> — Audio energy analysis</li><li><strong>AI Captions</strong> — Local speech recognition</li><li><strong>Face Tracking</strong> — AI vision</li><li><strong>Viral Score</strong> — Engagement scoring</li></ul>
+    <h3>Local AI Processing</h3><p>All AI runs 100% locally on your device. Your content is never sent to any cloud AI service.</p>
+    <h3>Accuracy Disclaimer</h3><p>AI results may not always be perfect. Always review AI-generated content before publishing. Cortex is not responsible for errors in AI-generated subtitles or clip selections.</p>
+    <h3>Processing Time</h3><p>More AI features = more processing time. Basic cutting: seconds. With captions + face tracking: several minutes per clip. A faster CPU improves speed significantly.</p>
+    <h3>No AI Training</h3><p>Your videos are never used to train AI models.</p>`
+  }
+};
+
+function showPolicy(key) {
+  const data = policies[key];
+  if (!data) return;
+  document.getElementById('policyContent').innerHTML =
+    `<div class="section-badge">${data.title}</div><div class="section-title">${data.title}</div><div class="policy-section">${data.html}</div>`;
+  showPage('policy');
+}
+
+// Close nav on outside click
+document.addEventListener('click', e => {
+  const nav = document.getElementById('navLinks');
+  const ham = document.getElementById('ham');
+  if (!nav.contains(e.target) && !ham.contains(e.target)) nav.classList.remove('open');
+});
+</script>
+</body>
+</html>
